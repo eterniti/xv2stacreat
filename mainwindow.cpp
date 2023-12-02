@@ -1526,4 +1526,56 @@ void MainWindow::on_vfxCopyButton_clicked()
     }
 }
 
+void MainWindow::on_gbb1Button_clicked()
+{
+    ExecGateDialog(&x2m->GetStageDef().gates_gbb[0]);
+}
+
+
+void MainWindow::on_gbb2Button_clicked()
+{
+    ExecGateDialog(&x2m->GetStageDef().gates_gbb[1]);
+}
+
+
+void MainWindow::on_gbb3Button_clicked()
+{
+    ExecGateDialog(&x2m->GetStageDef().gates_gbb[2]);
+}
+
+
+void MainWindow::on_gbb4Button_clicked()
+{
+    ExecGateDialog(&x2m->GetStageDef().gates_gbb[3]);
+}
+
+
+void MainWindow::on_gbb5Button_clicked()
+{
+    ExecGateDialog(&x2m->GetStageDef().gates_gbb[4]);
+}
+
+
+void MainWindow::on_gbb6Button_clicked()
+{
+    ExecGateDialog(&x2m->GetStageDef().gates_gbb[5]);
+}
+
+
+void MainWindow::on_gbb7Button_clicked()
+{
+    ExecGateDialog(&x2m->GetStageDef().gates_gbb[6]);
+}
+
+
+void MainWindow::on_gbb8Button_clicked()
+{
+    ExecGateDialog(&x2m->GetStageDef().gates_gbb[7]);
+}
+
+
+void MainWindow::on_gbb9Button_clicked()
+{
+    ExecGateDialog(&x2m->GetStageDef().gates_gbb[8]);
+}
 

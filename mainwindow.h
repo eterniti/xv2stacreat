@@ -84,6 +84,24 @@ private slots:
 
     void on_bgmCustomButton_clicked();
 
+    void on_gbb1Button_clicked();
+
+    void on_gbb2Button_clicked();
+
+    void on_gbb3Button_clicked();
+
+    void on_gbb4Button_clicked();
+
+    void on_gbb5Button_clicked();
+
+    void on_gbb6Button_clicked();
+
+    void on_gbb7Button_clicked();
+
+    void on_gbb8Button_clicked();
+
+    void on_gbb9Button_clicked();
+
 private:
     Ui::MainWindow *ui;
     X2mFile *x2m;

@@ -35,6 +35,10 @@ public:
     QPushButton *pushButton;
     QLineEdit *u0CEdit;
     QLineEdit *u10Edit;
+    QLineEdit *u14Edit;
+    QLineEdit *u18Edit;
+    QLabel *label_5;
+    QLabel *label_6;
 
     void setupUi(QDialog *GateDialog)
     {
@@ -74,6 +78,18 @@ public:
         u10Edit = new QLineEdit(GateDialog);
         u10Edit->setObjectName(QStringLiteral("u10Edit"));
         u10Edit->setGeometry(QRect(80, 138, 90, 20));
+        u14Edit = new QLineEdit(GateDialog);
+        u14Edit->setObjectName(QStringLiteral("u14Edit"));
+        u14Edit->setGeometry(QRect(280, 98, 90, 20));
+        u18Edit = new QLineEdit(GateDialog);
+        u18Edit->setObjectName(QStringLiteral("u18Edit"));
+        u18Edit->setGeometry(QRect(280, 138, 90, 20));
+        label_5 = new QLabel(GateDialog);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(220, 100, 49, 16));
+        label_6 = new QLabel(GateDialog);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(220, 140, 49, 16));
 
         retranslateUi(GateDialog);
         QObject::connect(buttonBox, SIGNAL(accepted()), GateDialog, SLOT(accept()));
@@ -90,6 +106,8 @@ public:
         label_3->setText(QApplication::translate("GateDialog", "U_0C:", 0));
         label_4->setText(QApplication::translate("GateDialog", "U_10:", 0));
         pushButton->setText(QApplication::translate("GateDialog", "Select stage", 0));
+        label_5->setText(QApplication::translate("GateDialog", "U_14:", 0));
+        label_6->setText(QApplication::translate("GateDialog", "U_18:", 0));
     } // retranslateUi
 
 };

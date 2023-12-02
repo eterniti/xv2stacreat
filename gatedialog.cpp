@@ -13,6 +13,8 @@ GateDialog::GateDialog(Xv2StageGate *gate, QWidget *parent) :
     ui->targetEdit->setValidator(new QIntValidator(-1, 0xFF, this));
     ui->u0CEdit->setValidator(new QIntValidator(this));
     ui->u10Edit->setValidator(new QIntValidator(this));
+    ui->u14Edit->setValidator(new QIntValidator(this));
+    ui->u18Edit->setValidator(new QIntValidator(this));
 
     GateToGui(*gate);
 }
@@ -28,6 +30,8 @@ void GateDialog::GateToGui(const Xv2StageGate &gate)
     ui->targetEdit->setText(QString("%1").arg((int)gate.target_stage_idx));
     ui->u0CEdit->setText(QString("%1").arg(gate.unk_0C));
     ui->u10Edit->setText(QString("%1").arg(gate.unk_10));
+    ui->u14Edit->setText(QString("%1").arg((int)gate.unk_14));
+    ui->u18Edit->setText(QString("%1").arg(gate.unk_18));
 }
 
 void GateDialog::GuiToGate(Xv2StageGate &gate)
@@ -36,6 +40,8 @@ void GateDialog::GuiToGate(Xv2StageGate &gate)
     gate.target_stage_idx = (uint32_t) ui->targetEdit->text().toInt();
     gate.unk_0C = (uint32_t) ui->u0CEdit->text().toInt();
     gate.unk_10 = (uint32_t) ui->u10Edit->text().toInt();
+    gate.unk_14 = (uint32_t) ui->u14Edit->text().toInt();
+    gate.unk_18 = (uint32_t) ui->u18Edit->text().toInt();
 }
 
 void GateDialog::on_pushButton_clicked()
