@@ -519,6 +519,7 @@ public:
          << QApplication::translate("MainWindow", "Chinese (tw)", 0)
          << QApplication::translate("MainWindow", "Chinese (zh)", 0)
          << QApplication::translate("MainWindow", "Korean", 0)
+         << QApplication::translate("MainWindow", "Japanese", 0)
         );
         stageNameCopyButton->setText(QApplication::translate("MainWindow", "Copy from game", 0));
         guidCopyButton->setText(QApplication::translate("MainWindow", "Copy to clipboard", 0));
