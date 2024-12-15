@@ -45,6 +45,7 @@ public:
     QAction *actionSelectFileBack;
     QAction *actionFromGameQst;
     QAction *actionFromGameBack;
+    QAction *actionToggle_dark_mode;
     QWidget *centralWidget;
     QTabWidget *tabWidget;
     QWidget *modInfoTab;
@@ -137,6 +138,7 @@ public:
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuHelp;
+    QMenu *menuView;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -169,6 +171,8 @@ public:
         actionFromGameQst->setObjectName(QStringLiteral("actionFromGameQst"));
         actionFromGameBack = new QAction(MainWindow);
         actionFromGameBack->setObjectName(QStringLiteral("actionFromGameBack"));
+        actionToggle_dark_mode = new QAction(MainWindow);
+        actionToggle_dark_mode->setObjectName(QStringLiteral("actionToggle_dark_mode"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         tabWidget = new QTabWidget(centralWidget);
@@ -458,6 +462,8 @@ public:
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuHelp = new QMenu(menuBar);
         menuHelp->setObjectName(QStringLiteral("menuHelp"));
+        menuView = new QMenu(menuBar);
+        menuView->setObjectName(QStringLiteral("menuView"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -467,12 +473,14 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menuFile->menuAction());
+        menuBar->addAction(menuView->menuAction());
         menuBar->addAction(menuHelp->menuAction());
         menuFile->addAction(actionOpen);
         menuFile->addAction(actionSave);
         menuFile->addSeparator();
         menuFile->addAction(actionExit);
         menuHelp->addAction(actionAbout);
+        menuView->addAction(actionToggle_dark_mode);
         mainToolBar->addAction(actionOpen);
         mainToolBar->addAction(actionSave);
 
@@ -499,6 +507,7 @@ public:
         actionSelectFileBack->setText(QApplication::translate("MainWindow", "Select file", 0));
         actionFromGameQst->setText(QApplication::translate("MainWindow", "Copy from game", 0));
         actionFromGameBack->setText(QApplication::translate("MainWindow", "Copy from game", 0));
+        actionToggle_dark_mode->setText(QApplication::translate("MainWindow", "Toggle dark mode", 0));
         label->setText(QApplication::translate("MainWindow", "Name:", 0));
         label_2->setText(QApplication::translate("MainWindow", "Author:", 0));
         label_3->setText(QApplication::translate("MainWindow", "Version:", 0));
@@ -581,6 +590,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(vfxTab), QApplication::translate("MainWindow", "Vfx", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0));
+        menuView->setTitle(QApplication::translate("MainWindow", "View", 0));
     } // retranslateUi
 
 };

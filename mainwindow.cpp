@@ -7,6 +7,7 @@
 #include <QAudioDeviceInfo>
 #include <QBuffer>
 #include <QAudioOutput>
+#include <QStyleFactory>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -70,6 +71,9 @@ bool MainWindow::Initialize()
     QDir::setCurrent(qApp->applicationDirPath());
 
     Bootstrap(false, false);
+
+    if (config.dark_theme)
+        ToggleDarkMode(false);
 
     x2m = new X2mFile();
     x2m->SetType(X2mType::NEW_STAGE);
@@ -1011,6 +1015,51 @@ void MainWindow::ExecGateDialog(Xv2StageGate *gate)
     dialog.exec();
 }
 
+void MainWindow::ToggleDarkMode(bool update_config)
+{
+    if (update_config)
+    {
+        config.dark_theme = !config.dark_theme;
+        config.Save();
+    }
+
+    static bool dark_theme = false;
+    static QPalette saved_palette;
+
+    if (!dark_theme)
+    {
+        saved_palette = qApp->palette();
+        //DPRINTF("%s\n", qApp->style()->metaObject()->className());
+
+        qApp->setStyle(QStyleFactory::create("Fusion"));
+        QPalette palette;
+        palette.setColor(QPalette::Window, QColor(53,53,53));
+        palette.setColor(QPalette::WindowText, Qt::white);
+        palette.setColor(QPalette::Base, QColor(15,15,15));
+        palette.setColor(QPalette::AlternateBase, QColor(53,53,53));
+        palette.setColor(QPalette::ToolTipBase, Qt::white);
+        palette.setColor(QPalette::ToolTipText, Qt::white);
+        palette.setColor(QPalette::Text, Qt::white);
+        palette.setColor(QPalette::Button, QColor(53,53,53));
+        palette.setColor(QPalette::ButtonText, Qt::white);
+        palette.setColor(QPalette::BrightText, Qt::red);
+
+        //palette.setColor(QPalette::Highlight, QColor(142,45,197).lighter());
+        palette.setColor(QPalette::HighlightedText, Qt::black);
+        palette.setColor(QPalette::Disabled, QPalette::Text, Qt::darkGray);
+        palette.setColor(QPalette::Disabled, QPalette::ButtonText, Qt::darkGray);
+        qApp->setPalette(palette);
+
+        dark_theme =true;
+    }
+    else
+    {
+        qApp->setStyle(QStyleFactory::create("windowsvista"));
+        qApp->setPalette(saved_palette);
+        dark_theme = false;
+    }
+}
+
 void MainWindow::on_actionExit_triggered()
 {
     if (ProcessShutdown())
@@ -1577,5 +1626,11 @@ void MainWindow::on_gbb8Button_clicked()
 void MainWindow::on_gbb9Button_clicked()
 {
     ExecGateDialog(&x2m->GetStageDef().gates_gbb[8]);
+}
+
+
+void MainWindow::on_actionToggle_dark_mode_triggered()
+{
+    ToggleDarkMode(true);
 }
 

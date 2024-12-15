@@ -102,6 +102,8 @@ private slots:
 
     void on_gbb9Button_clicked();
 
+    void on_actionToggle_dark_mode_triggered();
+
 private:
     Ui::MainWindow *ui;
     X2mFile *x2m;
@@ -130,6 +132,8 @@ private:
     void PlayAudio(AcbFile *acb, AwbFile *awb, uint32_t cue_id);
 
     void ExecGateDialog(Xv2StageGate *gate);
+
+    void ToggleDarkMode(bool update_config);
 };
 
 #endif // MAINWINDOW_H
